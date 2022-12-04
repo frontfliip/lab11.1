@@ -12,12 +12,17 @@ public class Client {
     private int age;
     @Getter @Setter
     private Gender sex;
+
+    @Getter @Setter
+    private String email;
+
     public static int count = 0;
 
-    public Client(String name, Gender sex, int age) {
+    public Client(String name, Gender sex, int age, String email) {
         id = ++count;
         this.name = name;
         this.sex = sex;
         this.age = age;
+        this.email = email;
     }
 }

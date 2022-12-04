@@ -1,3 +1,5 @@
+package task2;
+
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
 import com.mailjet.client.MailjetClient;
@@ -8,8 +10,8 @@ import com.mailjet.client.resource.Emailv31;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Main {
-    public static void main(String[] args) throws MailjetException, MailjetSocketTimeoutException {
+public class MailSender {
+    public static void sendMail(MailInfo mailInfo) throws MailjetException, MailjetSocketTimeoutException {
         MailjetClient client;
         MailjetRequest request;
         MailjetResponse response;
@@ -22,11 +24,10 @@ public class Main {
                                         .put("Name", "Ivan"))
                                 .put(Emailv31.Message.TO, new JSONArray()
                                         .put(new JSONObject()
-                                                .put("Email", "ivnik.cat@gmail.com")
-                                                .put("Name", "Ivan")))
-                                .put(Emailv31.Message.SUBJECT, "Popa")
-                                .put(Emailv31.Message.TEXTPART, "DAI NALOGI")
-                                .put(Emailv31.Message.HTMLPART, "<h3>KARAS TOLSTOLOB!")
+                                                .put("Email", mailInfo.getClient().getEmail())
+                                                .put("Name", mailInfo.getClient().getName())))
+                                .put(Emailv31.Message.SUBJECT, mailInfo.getMailCode().getSubject())
+                                .put(Emailv31.Message.TEXTPART, mailInfo.generate())
                                 .put(Emailv31.Message.CUSTOMID, "AppGettingStartedTest")));
         response = client.post(request);
         System.out.println(response.getStatus());

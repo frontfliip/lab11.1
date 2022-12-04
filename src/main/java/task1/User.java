@@ -1,4 +1,5 @@
-import lombok.Builder;
+package task1;
+
 import lombok.Singular;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -11,7 +12,7 @@ enum Gender {
 
 @SuperBuilder
 @ToString
-public class User extends Human{
+public class User extends Human {
     private String name;
     private int age;
     private Gender gender;
@@ -19,8 +20,4 @@ public class User extends Human{
     private double height;
     @Singular(value = "work")
     private List<String> occupations;
-
-
-
-
 }

@@ -1,3 +1,5 @@
+package task1;
+
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 

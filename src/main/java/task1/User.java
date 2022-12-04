@@ -1,17 +1,15 @@
 package task1;
 
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
-enum Gender {
-    MALE, FEMALE
-}
-
 @SuperBuilder
 @ToString
+@Getter
 public class User extends Human {
     private String name;
     private int age;
